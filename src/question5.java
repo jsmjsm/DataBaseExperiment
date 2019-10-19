@@ -146,6 +146,7 @@ public class question5 {
         JP3中操作：
         1.单行插入
         2.多行插入
+        3.子查询插入
          */
         //单行插入
         JButton InsertOneRow = new JButton("单行插入");
@@ -165,26 +166,18 @@ public class question5 {
             data[11] = JOptionPane.showInputDialog(null,"SALARY值输入:","输入",JOptionPane.PLAIN_MESSAGE);
             data[12] = JOptionPane.showInputDialog(null,"BONUS值输入:","输入",JOptionPane.PLAIN_MESSAGE);
             data[13] = JOptionPane.showInputDialog(null,"COMM值输入:","输入",JOptionPane.PLAIN_MESSAGE);
-
             try {
                 Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
                 connection.setAutoCommit(false);
                 Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery("INSERT INTO SAMPLE VALUES("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+", "+data[4]+", "
-                        +data[5]+", "+data[6]+", "+data[7]+", "+data[8]+", "+data[9]+", "+data[10]+", "+data[11]+", "+data[12]+", "+data[13]+", ");
+                String sql = "INSERT INTO SAMPLE VALUES("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+", "+data[4]+", "
+                        +data[5]+", "+data[6]+", "+data[7]+", "+data[8]+", "+data[9]+", "+data[10]+", "+data[11]+", "+data[12]+", "+data[13]+", ";
+                stmt.executeUpdate(sql);
                 stmt.close();
-                rs.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         });
-
-
-        /*
-        ResultSet rs = stmt.executeQuery("SELECT EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, " +
-                    "JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM"
-                    + " FROM EMPLOYEE ");
-         */
 
 
         //多行插入
@@ -308,9 +301,8 @@ public class question5 {
                     Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
                     connection.setAutoCommit(false);
                     Statement stmt = connection.createStatement();
-                    ResultSet rs = null;
                     while(changerow > 0){
-                        rs = stmt.executeQuery("INSERT INTO SAMPLE VALUES("+inputdata[changerow][0]+", "+inputdata[changerow][1]+", "+
+                        stmt.executeUpdate("INSERT INTO SAMPLE VALUES("+inputdata[changerow][0]+", "+inputdata[changerow][1]+", "+
                                 inputdata[changerow][2]+", "+inputdata[changerow][3]+", "+inputdata[changerow][4]+", "
                                 +inputdata[changerow][5]+", "+inputdata[changerow][6]+", "+inputdata[changerow][7]+", "+
                                 inputdata[changerow][8]+", "+inputdata[changerow][9]+", "+inputdata[changerow][10]+", "+inputdata[changerow][11]+", "+
@@ -318,7 +310,6 @@ public class question5 {
                         down();
                     }
                     stmt.close();
-                    rs.close();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -326,10 +317,20 @@ public class question5 {
 
             getInput.add(insert);
             getInput.add(quit);
-
+            getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             getInput.setLayout(new FlowLayout());
             getInput.setVisible(true);
          });
+
+        //子查询插入
+        JButton InsertByCheck = new JButton("子查询插入");
+        InsertByCheck.addActionListener(e -> {
+            JFrame Check = new JFrame("子查询插入");
+            Check.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+            JLabel checkinfo = new JLabel("查询指令");
+
+        });
 
         JP3.add(InsertOneRow);
         JP3.add(InsertManyRows);
