@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0643c57d-18f0-4a05-85ba-3c4c7ea7972f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Question5/question5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Question6/question6.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/question5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/question1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question1/question1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/question2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question2/question2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/question3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question3/question3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/question4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question4/question4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/question5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/InsertFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Table.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/question5.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +34,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -50,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.question5">
+  <component name="RunManager" selected="Application.question6">
     <configuration name="labupdate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="labupdate" />
       <module name="DataBaseExpriment" />
@@ -65,8 +63,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="question6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Question6.question6" />
+      <module name="DataBaseExpriment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Question6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.question6" />
         <item itemvalue="Application.question5" />
         <item itemvalue="Application.labupdate" />
       </list>
