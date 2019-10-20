@@ -1,4 +1,4 @@
-/**********************************************************************/
+package Question3; /**********************************************************************/
 /* labupdate.java                                                     */
 /* Sample Java program for "DB2 UDB PROGRAMMING USING JAVA"           */
 /*                          ( CG11 )                                  */
@@ -23,33 +23,35 @@
 import java.sql.*;
 import java.io.*;
 import java.util.*;
-
-import javax.swing.*;
-
 import java.math.*;
+
+
 
 /**********************************************************************/
 /* Class definition                                                   */
 /**********************************************************************/
-public class question4 {
+public class question3
+{
+/**********************************************************************/
+    /* Register the class with the db2 Driver                             */
     /**********************************************************************/
-    /* Register the class with the db2 Driver */
-    /**********************************************************************/
-    static {
-        try {
-            /********************* ?????????????????????? **************/
-            /* ( 2 ) Load the DB2 Driver */
-            /*********************************************************/
-            Class.forName("com.ibm.db2.jcc.DB2Driver");
-        } catch (Exception e) {
-            System.out.println("\n  Error loading DB2 Driver...\n");
-            System.out.println(e);
-            System.exit(1);
-        }
+    static
+    {   try
+    {
+        /*********************??????????????????????**************/
+        /* ( 2 ) Load the DB2 Driver                             */
+        /*********************************************************/
+        Class.forName ("com.ibm.db2.jcc.DB2Driver");
+    }
+    catch (Exception e)
+    {   System.out.println ("\n  Error loading DB2 Driver...\n");
+        System.out.println (e);
+        System.exit(1);
+    }
     }
 
-    /**********************************************************************/
-    /* Main routine */
+/**********************************************************************/
+    /* Main routine                                                       */
     /**********************************************************************/
     public static void main( String args[]) throws Exception
     {
@@ -94,21 +96,15 @@ public class question4 {
         sample.setAutoCommit(false);
 
 
-
-
-
-
         /*   Print instruction lines                       */
-        //System.out.println("This program will update the salaries for a department");
-        //System.out.println("\n");
-        //System.out.println("Please enter a department number: \n ");
+        System.out.println("This program will update the salaries for a department");
+        System.out.println("\n");
+        System.out.println("Please enter a department number: \n ");
 
         /*  Get the department number from the input data */
 
 
-        //s = in.readLine();
-        s = JOptionPane.showInputDialog(null, "Please enter a department number:" ,"Title",JOptionPane.QUESTION_MESSAGE );
-
+        s = in.readLine();
         deptno = s.substring(0,2);
         mydeptno = Integer.parseInt(deptno);
 
@@ -140,8 +136,7 @@ public class question4 {
             /***********************************************************************/
             int updateCount = pstmt.executeUpdate();
 
-            //System.out.println("\nNumber of rows updated: " + updateCount);
-            JOptionPane.showMessageDialog(null, "Number of rows updated:"+ updateCount, "title",JOptionPane.PLAIN_MESSAGE);
+            System.out.println("\nNumber of rows updated: " + updateCount);
         }  // end try
         catch ( SQLException x )
         {
@@ -159,4 +154,8 @@ public class question4 {
         System.exit(0);
     } // end main
 
-} // end of kegstaff class
+
+}  // end of kegstaff class
+
+
+
