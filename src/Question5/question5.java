@@ -25,20 +25,12 @@ class Table {
                 "JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM"
                 + " FROM EMPLOYEE ");
         while ( rs.next() ) {
-            Data[row][0] = rs.getString(1);
-            Data[row][1] = rs.getString(2);
-            Data[row][2] = rs.getString(3);
-            Data[row][3] = rs.getString(4);
-            Data[row][4] = rs.getString(5);
-            Data[row][5] = rs.getString(6);
-            Data[row][6] = rs.getString(7);
-            Data[row][7] = rs.getString(8);
-            Data[row][8] = rs.getString(9);
-            Data[row][9] = rs.getString(10);
-            Data[row][10]= rs.getString(11);
-            Data[row][11]= rs.getString(12);
-            Data[row][12]= rs.getString(13);
-            Data[row][13]= rs.getString(14);
+            while (rs.next() ) {
+                for(int i = 0; i <14; i++){
+                    Data[row][i] = rs.getString(i+1);
+                }
+                row++;
+            }
             row++;
         }
         rs.close();
@@ -68,21 +60,11 @@ class Table {
             ResultSet rs = stmt.executeQuery("SELECT EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, " +
                     "JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM"
                     + " FROM EMPLOYEE ");
+            //获取数据
             while (rs.next() ) {
-                Data[row][0] = rs.getString(1);
-                Data[row][1] = rs.getString(2);
-                Data[row][2] = rs.getString(3);
-                Data[row][3] = rs.getString(4);
-                Data[row][4] = rs.getString(5);
-                Data[row][5] = rs.getString(6);
-                Data[row][6] = rs.getString(7);
-                Data[row][7] = rs.getString(8);
-                Data[row][8] = rs.getString(9);
-                Data[row][9] = rs.getString(10);
-                Data[row][10]= rs.getString(11);
-                Data[row][11]= rs.getString(12);
-                Data[row][12]= rs.getString(13);
-                Data[row][13]= rs.getString(14);
+                for(int i = 0; i <14; i++){
+                    Data[row][i] = rs.getString(i+1);
+                }
                 row++;
             }
             rs.close();
@@ -218,7 +200,6 @@ class InsertFunction{
             data[11] = getSALARY.getText();
             data[12] = getBONUS.getText();
             data[13] = getCOMM.getText();
-
             try {
                 Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
                 connection.setAutoCommit(false);
@@ -385,6 +366,11 @@ class InsertFunction{
     public void InsertWithCheck(){
         JFrame getInput = new JFrame("输入");
 
+
+
+        getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        getInput.setLayout(new FlowLayout());
+        getInput.setVisible(true);
     }
     
 }
@@ -417,17 +403,24 @@ public class question5 {
         JPanel JP4 = new JPanel();
         JP4.setPreferredSize(new Dimension(600,50));
 
+        //JP1
         /*
         JP1,最上层操作
         点击按钮后读取数据库信息并更新
          */
+        JLabel info = new JLabel("表格信息：SAMPLE-EMPLOYEE");
+        info.setPreferredSize(new Dimension(200,40));
         JButton LoadDataBase = new JButton("载入数据库");
         LoadDataBase.setPreferredSize(new Dimension(100,40));
         LoadDataBase.addActionListener(e -> {
             k.refreshData();
         });
+        JP1.add(info);
         JP1.add(LoadDataBase);
 
+
+
+        //JP2
         //JP2中表格的显示
         JTable thisTabel = k.getTheTable();
         JScrollPane sp = new JScrollPane(thisTabel);
@@ -467,6 +460,8 @@ public class question5 {
         JP3.add(InsertOneRow);
         JP3.add(InsertManyRows);
         JP3.add(InsertByCheck);
+
+
 
         MainWindow.add(JP1,BorderLayout.NORTH);
         MainWindow.add(JP2,BorderLayout.WEST);

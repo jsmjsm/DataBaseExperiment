@@ -30,21 +30,16 @@ class Table {
         ResultSet rs = stmt.executeQuery("SELECT EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, " +
                 "JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM"
                 + " FROM EMPLOYEE ");
+        //添加判断，如果为空则赋值为“空”
         while ( rs.next() ) {
-            Data[row][0] = rs.getString(1);
-            Data[row][1] = rs.getString(2);
-            Data[row][2] = rs.getString(3);
-            Data[row][3] = rs.getString(4);
-            Data[row][4] = rs.getString(5);
-            Data[row][5] = rs.getString(6);
-            Data[row][6] = rs.getString(7);
-            Data[row][7] = rs.getString(8);
-            Data[row][8] = rs.getString(9);
-            Data[row][9] = rs.getString(10);
-            Data[row][10]= rs.getString(11);
-            Data[row][11]= rs.getString(12);
-            Data[row][12]= rs.getString(13);
-            Data[row][13]= rs.getString(14);
+            for(int i = 0; i <14; i++){
+                if (rs.getString(i+1).equals(" ")){
+                    Data[row][i] = "空";
+                }
+                else {
+                    Data[row][i] = rs.getString(i + 1);
+                }
+            }
             row++;
         }
         rs.close();
@@ -75,20 +70,13 @@ class Table {
                     "JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM"
                     + " FROM EMPLOYEE ");
             while (rs.next() ) {
-                Data[row][0] = rs.getString(1);
-                Data[row][1] = rs.getString(2);
-                Data[row][2] = rs.getString(3);
-                Data[row][3] = rs.getString(4);
-                Data[row][4] = rs.getString(5);
-                Data[row][5] = rs.getString(6);
-                Data[row][6] = rs.getString(7);
-                Data[row][7] = rs.getString(8);
-                Data[row][8] = rs.getString(9);
-                Data[row][9] = rs.getString(10);
-                Data[row][10]= rs.getString(11);
-                Data[row][11]= rs.getString(12);
-                Data[row][12]= rs.getString(13);
-                Data[row][13]= rs.getString(14);
+                for(int i = 0; i <14; i++){
+                    if (rs.getString(i+1).equals(" ")){
+                        Data[row][i] = "空";
+                    }
+                    else
+                        Data[row][i] = rs.getString(i+1);
+                }
                 row++;
             }
             rs.close();
@@ -404,7 +392,6 @@ public class question6 {
             e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) throws Exception{
         Table k = new Table();
