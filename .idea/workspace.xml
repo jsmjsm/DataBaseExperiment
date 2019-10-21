@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0643c57d-18f0-4a05-85ba-3c4c7ea7972f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Question7/question7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/InsertFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/InsertFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/question5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question5/question5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question6/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataBaseExpriment/Question6/Table.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Question5/question5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question5/question5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Question8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question8/question8.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -194,15 +194,15 @@ class InsertFunction{
             data[13] = getCOMM.getText();
             try {
                 Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
-                connection.setAutoCommit(false);
                 Statement stmt = connection.createStatement();
                 String sql = "INSERT INTO EMPLOYEE (EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM)" +
                         " VALUES("+"'"+data[0]+"'"+", "+"'"+data[1]+"'"+", "+"'"+data[2]+"'"+", "+"'"+data[3]+"'"+", "+"'"+data[4]+"'"+", "
-                        +"'"+data[5]+"'"+", "+"'"+data[6]+"'"+", "+"'"+data[7]+"'"+", "+"'"+data[8]+"'"+", "+"'"+data[9]+"'"+", "+"'"+data[10]+"'"+", "+data[11]+", "+data[12]+", "+data[13]+")";
+                        +"'"+data[5]+"'"+", "+"'"+data[6]+"'"+", "+"'"+data[7]+"'"+", "+data[8]+", "+"'"+data[9]+"'"+", "+"'"+data[10]+"'"+", "+data[11]+", "+data[12]+", "+data[13]+")";
                 System.out.println(sql);
-                stmt.executeUpdate(sql);
+                int k = stmt.executeUpdate(sql);
+                System.out.println("执行完毕");
+                System.out.println(k);
                 stmt.close();
-                connection.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -328,14 +328,15 @@ class InsertFunction{
             up();
         });
 
-        JButton quit = new JButton("完成后退出");
+        JButton quit = new JButton("提交数据库");
         quit.addActionListener(e2 -> {
             try {
                 Statement stmt = null;
+                Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
+                connection.setAutoCommit(false);
+                stmt = connection.createStatement();
                 while(changerow > 0){
-                    Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
-                    connection.setAutoCommit(false);
-                    stmt = connection.createStatement();
+
                     stmt.executeUpdate("INSERT INTO SAMPLE(EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM)" +
                             "VALUES("+inputdata[changerow][0]+", "+inputdata[changerow][1]+", "+
                             inputdata[changerow][2]+", "+inputdata[changerow][3]+", "+inputdata[changerow][4]+", "
@@ -344,6 +345,7 @@ class InsertFunction{
                             inputdata[changerow][12]+", "+inputdata[changerow][13]+", ");
                     down();
                 }
+                connection.commit();
                 stmt.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -361,8 +363,6 @@ class InsertFunction{
     //子查询插入
     public void InsertWithCheck(){
         JFrame getInput = new JFrame("输入");
-
-
 
         getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getInput.setLayout(new FlowLayout());
