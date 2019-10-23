@@ -278,7 +278,6 @@ class InsertFunction{
         getBONUS.setColumns(40);
         getCOMM.setColumns(40);
 
-
         getInput.setBounds(500,100,600,800);
         getInput.add(EMPNO);
         getInput.add(getEMPNO);
@@ -336,12 +335,11 @@ class InsertFunction{
                 connection.setAutoCommit(false);
                 stmt = connection.createStatement();
                 while(changerow > 0){
-
-                    stmt.executeUpdate("INSERT INTO SAMPLE(EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM)" +
-                            "VALUES("+inputdata[changerow][0]+", "+inputdata[changerow][1]+", "+
-                            inputdata[changerow][2]+", "+inputdata[changerow][3]+", "+inputdata[changerow][4]+", "
-                            +inputdata[changerow][5]+", "+inputdata[changerow][6]+", "+inputdata[changerow][7]+", "+
-                            inputdata[changerow][8]+", "+inputdata[changerow][9]+", "+inputdata[changerow][10]+", "+inputdata[changerow][11]+", "+
+                    stmt.executeUpdate("INSERT INTO EMPLOYEE(EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM)" +
+                            "VALUES("+"'"+inputdata[changerow][0]+"'"+", "+"'"+inputdata[changerow][1]+"'"+", "+
+                            "'"+inputdata[changerow][2]+"'"+", "+"'"+inputdata[changerow][3]+"'"+", "+"'"+inputdata[changerow][4]+"'"+", "
+                            +"'"+inputdata[changerow][5]+"'"+", "+"'"+inputdata[changerow][6]+"'"+", "+"'"+inputdata[changerow][7]+"'"+", "+
+                            inputdata[changerow][8]+", "+"'"+inputdata[changerow][9]+"'"+", "+"'"+inputdata[changerow][10]+"'"+", "+inputdata[changerow][11]+", "+
                             inputdata[changerow][12]+", "+inputdata[changerow][13]+", ");
                     down();
                 }
@@ -363,6 +361,9 @@ class InsertFunction{
     //子查询插入
     public void InsertWithCheck(){
         JFrame getInput = new JFrame("输入");
+        getInput.setBounds(500,100,500,600);
+
+
 
         getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getInput.setLayout(new FlowLayout());
@@ -450,7 +451,6 @@ public class question5 {
         InsertByCheck.addActionListener(e -> {
             InsertFunction insert = new InsertFunction();
             insert.InsertWithCheck();
-
         });
 
         JP3.add(InsertOneRow);

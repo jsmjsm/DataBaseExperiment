@@ -73,7 +73,6 @@ public class question4 {
         String SQLState = "     ";
         BufferedReader in = new BufferedReader( new InputStreamReader (System.in));
 
-
         /*  Establish connection and set default context  */
         System.out.println("Connect statement follows:");
 
@@ -93,11 +92,6 @@ public class question4 {
 
         sample.setAutoCommit(false);
 
-
-
-
-
-
         /*   Print instruction lines                       */
         //System.out.println("This program will update the salaries for a department");
         //System.out.println("\n");
@@ -105,13 +99,11 @@ public class question4 {
 
         /*  Get the department number from the input data */
 
-
         //s = in.readLine();
         s = JOptionPane.showInputDialog(null, "Please enter a department number:" ,"Title",JOptionPane.QUESTION_MESSAGE );
 
         deptno = s.substring(0,2);
         mydeptno = Integer.parseInt(deptno);
-
 
         /*  Issue Select statement  */
         System.out.println("Statement stmt follows");

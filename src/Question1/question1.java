@@ -1,9 +1,7 @@
 package Question1;
 
 import java.sql.*;
-import java.io.*;
 import java.lang.*;
-import java.util.*;
 
 public class question1 {
     static {
