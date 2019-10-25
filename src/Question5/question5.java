@@ -359,17 +359,25 @@ class InsertFunction{
     }
 
     //子查询插入
-    public void InsertWithCheck(){
+    public void InsertWithCheck() throws SQLException {
         JFrame getInput = new JFrame("输入");
         getInput.setBounds(500,100,500,600);
 
+        JLabel label = new JLabel("输入查询内容:");
+        JTextField getcheck = new JTextField();
+        getcheck.setColumns(30);
+
+
+
+        Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
+        Statement stmt = null;
+        
 
 
         getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getInput.setLayout(new FlowLayout());
         getInput.setVisible(true);
     }
-    
 }
 
 public class question5 {
@@ -415,8 +423,6 @@ public class question5 {
         JP1.add(info);
         JP1.add(LoadDataBase);
 
-
-
         //JP2
         //JP2中表格的显示
         JTable thisTabel = k.getTheTable();
@@ -450,14 +456,16 @@ public class question5 {
         JButton InsertByCheck = new JButton("子查询插入");
         InsertByCheck.addActionListener(e -> {
             InsertFunction insert = new InsertFunction();
-            insert.InsertWithCheck();
+            try {
+                insert.InsertWithCheck();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         });
 
         JP3.add(InsertOneRow);
         JP3.add(InsertManyRows);
         JP3.add(InsertByCheck);
-
-
 
         MainWindow.add(JP1,BorderLayout.NORTH);
         MainWindow.add(JP2,BorderLayout.WEST);

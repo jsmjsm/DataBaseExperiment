@@ -18,11 +18,11 @@ public class question1 {
             Connection con = null;
             String url = "jdbc:db2://127.0.0.1:50000/sample";
             if (argv.length == 0)
-            { con = DriverManager.getConnection(url); }
+            { con = DriverManager.getConnection(url,"db2inst1","db2root-pwd"); }
             else if (argv.length == 2){
                 String userid = argv[0];
                 String passwd = argv[1];
-                con = DriverManager.getConnection(url,userid,passwd);
+                con = DriverManager.getConnection(url,"db2inst1","db2root-pwd");
             }
             else
             { throw new Exception

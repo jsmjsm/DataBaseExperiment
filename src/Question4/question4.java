@@ -1,4 +1,5 @@
-package Question4; /**********************************************************************/
+package Question4;
+/**********************************************************************/
 /* labupdate.java                                                     */
 /* Sample Java program for "DB2 UDB PROGRAMMING USING JAVA"           */
 /*                          ( CG11 )                                  */
