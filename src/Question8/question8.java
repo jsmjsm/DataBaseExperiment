@@ -1,4 +1,4 @@
-package Question7;
+package Question8;
 
 import java.awt.*;
 import java.sql.*;
@@ -7,7 +7,7 @@ import javax.swing.table.TableColumn;
 
 //Table类，实现获取数据，初始化，更新表格
 class Table {
-    private String[][] Data = new String[200][14];
+    public String[][] Data = new String[200][14];
     private String[] TableTitle = new String[]{"EMPNO", "FIRSTNME","MIDINIT","LASTNAME","WORKDEPT","PHONENO",
             "HIREDATE","JOB","EDLEVEL","SEX","BIRTHDATE","SALARY","BONUS","COMM"};
     private JTable TheTable;
@@ -418,7 +418,59 @@ class InsertFunction{
     }
 }
 
-public class question7 {
+class Update{
+    Update(){};
+    public void Update(Table l){
+        JFrame Change = new JFrame("修改");
+        Change.setBounds(500,100,500,600);
+        JLabel label0 = new JLabel("输入修改的行数");
+        label0.setPreferredSize(new Dimension(100,30));
+        JTextField getLine = new JTextField();
+        getLine.setColumns(30);
+
+        JLabel label1 = new JLabel("输入新的数据列数");
+        label1.setPreferredSize(new Dimension(100,30));
+        JTextField getDateName = new JTextField();
+        getDateName.setColumns(30);
+
+        JLabel label2 = new JLabel("输入新的数据内容");
+        label2.setPreferredSize(new Dimension(100,30));
+        JTextField getDateValue = new JTextField();
+        getDateValue.setColumns(30);
+
+        JButton update = new JButton("上传");
+        update.addActionListener(e -> {
+            int row = Integer.parseInt(getLine.getText());
+            int col = Integer.parseInt(getDateName.getText());
+            String value = getDateValue.getText();
+            String name = l.Data[row][1];
+            l.Data[row][col] = value;
+            try{
+                Connection con = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample", "db2inst1", "db2root-pwd");
+                Statement stmt = con.createStatement();
+                String sql = "UPDATE EMPLOYEE SET" + l.Data[row][col] + " = " + value + " WHERE FIRSTNME" + " = "+name;
+                stmt.executeUpdate(sql);
+                stmt.close();
+            }catch (SQLException sqlm){
+                JOptionPane.showMessageDialog(null,sqlm,"错误",JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        Change.add(label0);
+        Change.add(getLine);
+        Change.add(label1);
+        Change.add(getDateName);
+        Change.add(label2);
+        Change.add(getDateValue);
+        Change.add(update);
+
+        Change.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        Change.setLayout(new FlowLayout());
+        Change.setVisible(true);
+    }
+}
+
+public class question8 {
     static {
         try{
             Class.forName("com.ibm.db2.jcc.DB2Driver");
@@ -496,9 +548,16 @@ public class question7 {
             insert.InsertWithCheck();
         });
 
+        JButton update = new JButton("修改");
+        update.addActionListener(e -> {
+            Update u = new Update();
+            u.Update(k);
+        });
+
         JP3.add(InsertOneRow);
         JP3.add(InsertManyRows);
         JP3.add(InsertByCheck);
+        JP3.add(update);
 
         MainWindow.add(JP1,BorderLayout.NORTH);
         MainWindow.add(JP2,BorderLayout.WEST);

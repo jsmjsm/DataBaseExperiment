@@ -1,6 +1,8 @@
 package Question5;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -198,10 +200,8 @@ class InsertFunction{
                 String sql = "INSERT INTO EMPLOYEE (EMPNO, FIRSTNME, MIDINIT, LASTNAME, WORKDEPT, PHONENO, HIREDATE, JOB, EDLEVEL, SEX, BIRTHDATE, SALARY, BONUS, COMM)" +
                         " VALUES("+"'"+data[0]+"'"+", "+"'"+data[1]+"'"+", "+"'"+data[2]+"'"+", "+"'"+data[3]+"'"+", "+"'"+data[4]+"'"+", "
                         +"'"+data[5]+"'"+", "+"'"+data[6]+"'"+", "+"'"+data[7]+"'"+", "+data[8]+", "+"'"+data[9]+"'"+", "+"'"+data[10]+"'"+", "+data[11]+", "+data[12]+", "+data[13]+")";
-                System.out.println(sql);
                 int k = stmt.executeUpdate(sql);
                 System.out.println("执行完毕");
-                System.out.println(k);
                 stmt.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -363,16 +363,45 @@ class InsertFunction{
         JFrame getInput = new JFrame("输入");
         getInput.setBounds(500,100,500,600);
 
-        JLabel label = new JLabel("输入查询内容:");
+        JLabel label0 = new JLabel("输入查询内容:");
+        label0.setPreferredSize(new Dimension(100,30));
         JTextField getcheck = new JTextField();
         getcheck.setColumns(30);
 
+        JLabel label1 = new JLabel("输入查询的值");
+        label1.setPreferredSize(new Dimension(100,30));
+        JTextField get_check_value = new JTextField();
+        get_check_value.setColumns(30);
 
+        JLabel label2 = new JLabel("输入插入内容");
+        label2.setPreferredSize(new Dimension(100,30));
+        JTextField getinsert = new JTextField();
+        getinsert.setColumns(30);
 
-        Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample","db2inst1","db2root-pwd");
-        Statement stmt = null;
-        
+        JButton Insert = new JButton("插入");
+        Insert.addActionListener(e -> {
+            String to_check = getcheck.getText();
+            String to_check_value = get_check_value.getText();
+            String to_insert = getinsert.getText();
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:db2://127.0.0.1:50000/sample", "db2inst1", "db2root-pwd");
+                Statement stmt = connection.createStatement();
+                String sql = "INSERT INTO EMPLOYEE ("+ "'"+to_insert+"'"+")" +" VALUES(SELECT EMPLOYEE."+to_check+" FROM EMPLOYEE WHERE EMPLOYEE." + to_check +
+                                "=" + to_check_value+")";
+                stmt.executeUpdate(sql);
+                stmt.close();
+            }catch (SQLException e1){
+                e1.printStackTrace();
+            }
+        });
 
+        getInput.add(label0);
+        getInput.add(getcheck);
+        getInput.add(label1);
+        getInput.add(get_check_value);
+        getInput.add(label2);
+        getInput.add(getinsert);
+        getInput.add(Insert);
 
         getInput.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getInput.setLayout(new FlowLayout());
@@ -390,7 +419,6 @@ public class question5 {
         }
     }
     
-
     public static void main(String[] args) throws Exception{
         Table k = new Table();
         JFrame MainWindow = new JFrame("表");
